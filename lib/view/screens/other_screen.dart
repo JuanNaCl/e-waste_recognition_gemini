@@ -20,6 +20,7 @@ class _OtherScreenState extends State<OtherScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
         centerTitle: false,
         title: const Text('Más opciones'),
       ),

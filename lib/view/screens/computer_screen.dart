@@ -20,6 +20,7 @@ class _ComputerScreenState extends State<ComputerScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
         centerTitle: false,
         title: const Text('Computadores'),
       ),

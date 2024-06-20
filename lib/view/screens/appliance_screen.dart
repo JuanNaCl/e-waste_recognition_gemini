@@ -19,6 +19,7 @@ class _ApplianceScreenState extends State<ApplianceScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
         centerTitle: false,
         title: const Text('Electrodomésticos'),
       ),

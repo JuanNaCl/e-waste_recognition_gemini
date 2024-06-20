@@ -19,6 +19,7 @@ class _BatteryScreenState extends State<BatteryScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
         centerTitle: false,
         title: const Text('Baterías'),
       ),

@@ -6,7 +6,7 @@ import 'package:proyecto_reconocimiento/config/router/app_router.dart';
 import 'provider/generate_content_provider.dart';
 
 Future main() async {
-  await dotenv.load();
+  await dotenv.load(fileName: '.env');
   runApp(const MyApp());
 }
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
           useMaterial3: true,
         ),
         routerConfig: appRouter,

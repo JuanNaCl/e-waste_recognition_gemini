@@ -1,4 +1,4 @@
-# proyecto_reconocimiento
+# E-waste recognition
 
 
 
