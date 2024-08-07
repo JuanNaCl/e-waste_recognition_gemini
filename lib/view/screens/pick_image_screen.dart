@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'dart:developer';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -146,7 +146,7 @@ class _PickImageScreenState extends State<PickImageScreen> {
             ),
           ],
         ),
-      ),              
+      ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -199,26 +199,31 @@ class _PickImageScreenState extends State<PickImageScreen> {
                 width: size.width * 0.8,
                 //padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: FilledButton(
-                    onPressed: () async {
-                      await getImageFromGallery();
-                      _image == null
-                          ? QuickAlert.show(
-                              context: context,
-                              type: QuickAlertType.error,
-                              text: 'No has seleccionado ninguna imagen',
-                            )
-                          : _isImageLoaded = true;
-                    },
-                    child: ListTile(
-                      leading: const Icon(
-                        Icons.image,
-                        color: Colors.white,
-                      ),
-                      title: Text(
-                        'Seleccionar imagen',
-                        style: GoogleFonts.mPlusRounded1c(color: Colors.white),
-                      ),
-                    )),
+                  onPressed: () async {
+                    await getImageFromGallery();
+                    // final a  = await generateContentProvider!.obtenerRespuestaGemini('HOLA, como estas');
+
+                    // log(a ?? 'no hay respuesta');
+
+                    _image == null
+                        ? QuickAlert.show(
+                            context: context,
+                            type: QuickAlertType.error,
+                            text: 'No has seleccionado ninguna imagen',
+                          )
+                        : _isImageLoaded = true;
+                  },
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.image,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      'Seleccionar imagen',
+                      style: GoogleFonts.mPlusRounded1c(color: Colors.white),
+                    ),
+                  ),
+                ),
               ),
               Container(
                 width: size.width * 0.8,

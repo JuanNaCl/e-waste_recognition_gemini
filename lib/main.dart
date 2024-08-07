@@ -38,6 +38,6 @@ GenerativeModel configurarModelo() {
 
 GenerativeModel configurarModeloVision() {
   final apiKey = dotenv.env['API_KEY_GEMINI_PRO'];
-  final model = GenerativeModel(model: 'gemini-pro-vision', apiKey: apiKey!);
+  final model = GenerativeModel(model: 'gemini-1.5-flash', apiKey: apiKey!);
   return model;
 }

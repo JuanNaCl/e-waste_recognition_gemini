@@ -43,17 +43,22 @@ class GenerateContentProvider extends InheritedWidget {
     return Future.value(response.text);
   }
 
-  Future<String?> describirImagen(String entradaDeTexto, String pathImg) async {
-    Uint8List imgBuffer;
+Future<String?> describirImagen(String entradaDeTexto, String pathImg) async {
+  Uint8List imgBuffer;
+
+  try {
+    // Verifica si la ruta de la imagen es absoluta (comienza con '/')
     if (pathImg.startsWith('/')) {
       final imgFile = File(pathImg);
       imgBuffer = await imgFile.readAsBytes();
     } else {
+      // Carga la imagen desde el bundle de recursos
       final imgBytes = await rootBundle.load(pathImg);
       imgBuffer = imgBytes.buffer.asUint8List();
     }
+
     final imageParts = [
-      DataPart('image/jpeg', imgBuffer),
+      DataPart('image/jpeg', imgBuffer), // Asegúrate de que la imagen es JPEG
     ];
 
     final prompt = TextPart(entradaDeTexto);
@@ -62,8 +67,17 @@ class GenerateContentProvider extends InheritedWidget {
         Content.multi([prompt, ...imageParts])
       ],
     );
+
+    // Imprime la respuesta en la consola para debug
+    print('Respuesta Gemini Vision: ${response.text}');
+
     return Future.value(response.text);
+  } catch (e) {
+    // Maneja cualquier excepción que ocurra
+    print('Error al describir la imagen: ${e.toString()}');
+    return null;
   }
+}
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => false;
